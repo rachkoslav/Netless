@@ -1,5 +1,5 @@
 init:
-	@pip intall -r requirements.txt
+	@pip install -r requirements.txt
 
 help:
 	@echo '	init'
