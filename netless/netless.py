@@ -21,6 +21,8 @@ def sms_reply():
     inMsg = MessagingResponse()
     body = inMsg.attrs.get('Body')
     logger.info(body)
+    logger.info(inMsg.to_xml())
+    inMsg.message("Response is here!")
 
 if __name__ == '__main__':
     netless.run(debug=True)
