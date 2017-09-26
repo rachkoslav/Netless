@@ -19,7 +19,6 @@ netless = Flask(__name__)
 @netless.route("/sms", methods=['GET', 'POST'])
 def sms_reply():
     inMsg = MessagingResponse()
-    body = inMsg.attrs.get('Body')
     logger.info(body)
     logger.info(inMsg.to_xml())
     return inMsg.message("Response is here!")
