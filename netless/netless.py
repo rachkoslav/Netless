@@ -1,13 +1,19 @@
 import os
-from twilio.rest import Client
+import twilioapi
+from twilio.twiml.messaging_response import MessagingResponse
+from flask import Flask, request, redirect
 
-acc_sid = os.environ["ASID"]
-acc_tok = os.environ["ATOK"]
+# SMS controller to send separate messages
+smsController = twilioapi.SMS(os.environ["ASID"], os.environ["ATOK"])
 
-client = Client(acc_sid, acc_tok)
+netless = Flask(__name__)
 
-client.messages.create(
-    to="+447909248538",
-    from_="+447481346184",
-    body="Test"
-)
+
+@netless.route("/sms", methods=['GET', 'POST'])
+def sms_reply():
+    inMsg = MessagingResponse()
+    body = inMsg.attrs.get('Body')
+    print body
+
+if __name__ == '__main__':
+    netless.run(debug=True)
