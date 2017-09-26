@@ -3,9 +3,10 @@ from twilio.rest import Client
 
 class SMS:
     def __init__(self, sid, token):
-        if sid or token is None:
-            print "Invalid acc_sid or acc_tok! Exiting..."
-            exit(-1)
+        #if sid or token is None:
+            #print "Invalid acc_sid or acc_tok! Exiting..."
+            #print sid, token
+	    #exit(-1)
 
         self.acc_sid = sid
         self.acc_tok = token
