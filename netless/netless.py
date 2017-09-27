@@ -7,7 +7,7 @@ import logging
 # SMS controller to send separate messages
 smsController = twilioapi.SMS(os.environ["ASID"], os.environ["ATOK"])
 
-# Logging code copied from: 
+# Logging code copied from:
 # https://fangpenlin.com/posts/2012/08/26/good-logging-practice-in-python/
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -23,17 +23,6 @@ handler.setFormatter(formatter)
 # add the handlers to the logger
 logger.addHandler(handler)
 
-logger.info('Hello baby')
-
-# logger = logging.getLogger(__name__)
-# hdlr = logging.FileHandler('sample.log')
-#
-# formatter = logging.Formatter('%(asctime)s %(message)s')
-# hdlr.setFormatter(hdlr)
-#
-# hdlr.setLevel(logging.INFO)
-# logger.addHandler(hdlr)
-
 netless = Flask(__name__)
 
 
@@ -46,5 +35,5 @@ def sms_reply():
     return str(inMsg)
 
 if __name__ == '__main__':
-    logger.info('First log')
+    logger.info('App started')
     netless.run(debug=True)
