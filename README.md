@@ -1,16 +1,26 @@
 # Netless
+  -- Simple SMS Application
 
+## Prerequisites
+Python 2.7 version installed.
 
-# LICENSES
-## Flask License
-Copyright (c) 2015 by Armin Ronacher and contributors. See AUTHORS for more details.
+---
+## Setup
+To install the required libraries run the following code from the Netless directory:
+`sudo make init`. This will install libs like twilio, Flask and requests, which are crucial for the application to runs and funcions correctly.
 
-Some rights reserved.
+---
+## Running the application
+There are two ways of doing this:
+1. Executing `python netless/netless.py &` from the project directory
+2. Executing `bash make run` from the project directory.
 
-Redistribution and use in source and binary forms of the software as well as documentation, with or without modification, are permitted provided that the following conditions are met:
+The latter one seems to not recording logs which I find strange.
 
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-The names of the contributors may not be used to endorse or promote products derived from this software without specific prior written permission.
-THIS SOFTWARE AND DOCUMENTATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE AND DOCUMENTATION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+---
+## Internet Usage
+Application requires open `5000` port to be able to communicate with the twilio api.
 
+---
+## Future
+<b>NOTE: This is a overnight developed project!<b>
