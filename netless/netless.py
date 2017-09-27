@@ -1,6 +1,6 @@
 import os
 import twilioapi
-from twilio.twiml.messaging_response import MessagingResponse
+from twilio.twiml.messaging_response import MessagingResponse, Body
 from flask import Flask, request, redirect
 import logging
 
@@ -29,7 +29,7 @@ netless = Flask(__name__)
 @netless.route("/sms", methods=['GET', 'POST'])
 def sms_reply():
     inMsg = MessagingResponse()
-    logger.info(str(inMsg))
+    logger.info(Body.value)
     inMsg.message("Response is here!")
     logger.info(str(inMsg))
     return str(inMsg)
