@@ -1,7 +1,7 @@
 import requests
 
 # API - http://www.icndb.com/api/
-def getRandomJoke:
+def getRandomJoke():
     resp = requests.get("http://api.icndb.com/jokes/random")
     # Split the repose just before the start of the joke
     jokeWrap = resp.content.split("\"joke\"")
