@@ -4,6 +4,7 @@ from jokeapi import getRandomJoke
 # from weatherapi import getWeatherLeeds
 from twilio.twiml.messaging_response import MessagingResponse
 from flask import Flask, request
+import netifaces as ni
 import logging
 
 # SMS controller to send separate messages
@@ -25,6 +26,13 @@ handler.setFormatter(formatter)
 # add the handlers to the logger
 logger.addHandler(handler)
 
+# Get the machine's IP address
+# https://stackoverflow.com/questions/24196932/how-can-i-get-the-ip-address-of-eth0-in-python
+ni.ifaddresses('eth0')
+ip = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
+
+logger.info('IP address retrieved: %s' %ip)
+
 netless = Flask(__name__)
 
 
@@ -37,11 +45,13 @@ def sms_reply():
     body = request.values.get('Body', None)
     logger.info('The request body: %s' %body)
     if body == 'JOKE':
+        logger.info('Getting random joke')
         respMsg.message(getRandomJoke())
     elif body == 'WEATHER':
         # TODO
         respMsg.message("RAIN!!! (API to be connected)")
     else:
+        logger.info('Default response assigned')
         respMsg.message("You are just waisting my trial credits, aren't you?")
 
     logger.info('The response: %s' %respMsg)
@@ -49,5 +59,5 @@ def sms_reply():
     return str(respMsg)
 
 if __name__ == '__main__':
-    logger.info('App started')
-    netless.run(host='172.31.9.79', debug=True)
+    logger.info('Application started on %s:5000' %ip)
+    netless.run(host=ip, debug=True)
