@@ -50,4 +50,4 @@ def sms_reply():
 
 if __name__ == '__main__':
     logger.info('App started')
-    netless.run(debug=True)
+    netless.run(host='172.31.9.79', debug=True)
