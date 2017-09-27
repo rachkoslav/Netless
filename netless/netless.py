@@ -1,7 +1,7 @@
 import os
 import twilioapi
 from jokeapi import getRandomJoke
-from weatherapi import getWeatherLeeds
+# from weatherapi import getWeatherLeeds
 from twilio.twiml.messaging_response import MessagingResponse
 from flask import Flask, request
 import logging
