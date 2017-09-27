@@ -1,5 +1,7 @@
 import os
 import twilioapi
+from jokeapi import getRandomJoke
+from weatherapi import getWeatherLeeds
 from twilio.twiml.messaging_response import MessagingResponse
 from flask import Flask, request
 import logging
@@ -13,7 +15,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 # create a file handler
-handler = logging.FileHandler('hello.log')
+handler = logging.FileHandler('logs.log')
 handler.setLevel(logging.INFO)
 
 # create a logging format
@@ -35,15 +37,14 @@ def sms_reply():
     body = request.values.get('Body', None)
     logger.info('The request body: %s' %body)
     if body == 'JOKE':
-        # TODO
-        respMsg.message("THIS IS WORKING! Not really..")
+        respMsg.message(getRandomJoke())
     elif body == 'WEATHER':
         # TODO
-        respMsg.message("RAIN!")
+        respMsg.message("RAIN!!! (API to be connected)")
     else:
-        respMsg.message("Response is here!")
+        respMsg.message("You are just waisting my trial credits, aren't you?")
 
-    logger.info('The response body: %s' %respMsg)
+    logger.info('The response: %s' %respMsg)
 
     return str(respMsg)
 
