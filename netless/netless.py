@@ -1,7 +1,7 @@
 import os
 import twilioapi
-from twilio.twiml.messaging_response import MessagingResponse, Body
-from flask import Flask, request, redirect
+from twilio.twiml.messaging_response import MessagingResponse
+from flask import Flask, request
 import logging
 
 # SMS controller to send separate messages
@@ -28,11 +28,24 @@ netless = Flask(__name__)
 
 @netless.route("/sms", methods=['GET', 'POST'])
 def sms_reply():
-    inMsg = MessagingResponse()
-    logger.info(Body)
-    inMsg.message("Response is here!")
-    logger.info(str(inMsg))
-    return str(inMsg)
+    respMsg = MessagingResponse()
+
+    # Read body core was partly copied from:
+    # https://twilio.radicalskills.com/projects/sms-respond/2.html
+    body = request.values.get('Body', None)
+    logger.info('The request body: %s' %body)
+    if body == 'JOKE':
+        # TODO
+        respMsg.message("THIS IS WORKING! Not really..")
+    elif body == 'WEATHER':
+        # TODO
+        respMsg.message("RAIN!")
+    else:
+        respMsg.message("Response is here!")
+
+    logger.info('The response body: %s' %respMsg)
+
+    return str(respMsg)
 
 if __name__ == '__main__':
     logger.info('App started')
