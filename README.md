@@ -29,7 +29,7 @@ Application requires open `5000` port to be able to communicate with the twilio 
 
 ---
 ## TODO:
-<b>NOTE: This is a overnight developed project!<b>
+<b>NOTE: This is an one-night project!<b>
 1. Weather api to get the weather for specified location
 2. Voice interaction(possible but a bit low priority right now)
 3. Email api - Send and Receive emails to your phone via text message.
